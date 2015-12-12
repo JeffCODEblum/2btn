@@ -4,8 +4,9 @@ function Player() {
 	this.y = 0;
 	this.h = 16;
 	this.w = 16;
-	
 	this.theta = Math.PI / 2;
+	this.vx = 0;
+	this.vy = 0;
 	
 	this.gun = new Gun();
 	
@@ -19,14 +20,14 @@ function Player() {
 		this.y = y;
 	}
 	
-	var vx, vy, bvx, bvy;
+	var bvx, bvy;
 	this.update = function() {
 		this.gun.update();
-		vx = Math.sin(this.theta) * 4;
-		vy = Math.cos(this.theta) * 4;
+		this. vx = Math.sin(this.theta) * 4;
+		this. vy = Math.cos(this.theta) * 4;
 		
-		this.x += vx;
-		this.y += vy;
+		this.x += this.vx;
+		this.y += this.vy;
 		
 		if (this.controller.a) {
 			this.theta += (Math.PI / 6) * TURN_SPEED;
