@@ -8,6 +8,8 @@ function Player() {
 	this.vx = 0;
 	this.vy = 0;
 	
+	this.hp = 100;
+	
 	this.gun = new Gun();
 	
 	this.controller = {
@@ -29,13 +31,26 @@ function Player() {
 		this.x += this.vx;
 		this.y += this.vy;
 		
+		if (this.x < 16) {
+			this.x = 16;
+		}
+		if (this.x > 480 - 16) {
+			this.x = 480 - 16;
+		}
+		if (this.y < 16) {
+			this.y = 16;
+		}
+		if (this.y > 320 - 16) {
+			this.y = 320 - 16;
+		}
+		
 		if (this.controller.a) {
 			this.theta += (Math.PI / 6) * TURN_SPEED;
 		}
 		if (this.controller.b) {
 			bvx = Math.sin(this.theta) * 8;
 			bvy = Math.cos(this.theta) * 8;
-			this.gun.shoot(this.x, this.y, bvx, bvy);
+			this.gun.shoot(this.x, this.y, this.theta);
 		}
 				
 		if (this.x > 480) this.x -= 480;

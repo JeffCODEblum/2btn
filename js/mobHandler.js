@@ -62,6 +62,8 @@ function Mob() {
 	this.hp = 0;
 	this.status = 0;
 	
+	this.lastAttack = 0;
+	
 	this.player;
 	this.initialize = function(player) {
 		this.player = player;
@@ -76,6 +78,13 @@ function Mob() {
 					this.kill();
 					bullets[i].unset();
 				}
+			}
+		}
+		
+		if (this.player.x + 16 > this.x && this.player.x < this.x + 16 && this.player.y + 16 > this.y && this.player.y < this.y + 16) {
+			if (Date.now() - this.lastAttack > 200) {
+				player.hp -= 10;
+				this.lastAttack = Date.now();
 			}
 		}
 	}

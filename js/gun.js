@@ -1,19 +1,27 @@
-var NUM_BULLETS = 10;
+var NUM_BULLETS = 8;
 function Gun() {
-	var fireRate = 100;
+	var fireRate = 400;
 	this.lastShot = 0;
 	this.bullets = [];
 	for (var i = 0; i < NUM_BULLETS; i++){
 		this.bullets.push(new Bullet());
 	}
 	
-	this.shoot = function(x, y, vx, vy) {
+	this.shoot = function(x, y, theta) {
 		if (Date.now() - this.lastShot > fireRate) {
-			for (var i = 0; i < this.bullets.length; i++) {
-				if (this.bullets[i].status == 0) {
-					this.bullets[i].set(x, y, vx, vy);
-					this.lastShot = Date.now();
-					break;
+			var randVal, vx, vy;
+			for (var j = 0; j < 4; j++) {
+				randVal = (Math.floor(Math.random() * 8) - 4)  * Math.PI / 120;
+			//	randVal = 0;
+				vx = Math.sin(theta + randVal) * 10;
+				vy = Math.cos(theta + randVal) * 10;
+				
+				for (var i = 0; i < this.bullets.length; i++) {
+					if (this.bullets[i].status == 0) {
+						this.bullets[i].set(x, y, vx, vy);
+						this.lastShot = Date.now();
+						break;
+					}
 				}
 			}
 		}
