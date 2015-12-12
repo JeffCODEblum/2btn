@@ -9,12 +9,13 @@ var player = new Player();
 var renderer = new Renderer();
 
 renderer.initialize(player, mobHandler);
+mobHandler.initialize(player);
 
 player.spawn(480/2, 320/2);
-mobHandler.spawn();
 
 function RunGame() {
 	player.update();
+	mobHandler.update();
 	Draw();
 	setTimeout(RunGame, 1000/60);
 }

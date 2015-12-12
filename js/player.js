@@ -4,7 +4,7 @@ function Player() {
 	this.y = 0;
 	this.h = 16;
 	this.w = 16;
-	this.theta = Math.PI / 2;
+	this.theta = Math.PI;
 	this.vx = 0;
 	this.vy = 0;
 	

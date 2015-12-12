@@ -1,5 +1,6 @@
 var NUM_BULLETS = 10;
 function Gun() {
+	var fireRate = 100;
 	this.lastShot = 0;
 	this.bullets = [];
 	for (var i = 0; i < NUM_BULLETS; i++){
@@ -7,7 +8,7 @@ function Gun() {
 	}
 	
 	this.shoot = function(x, y, vx, vy) {
-		if (Date.now() - this.lastShot > 400) {
+		if (Date.now() - this.lastShot > fireRate) {
 			for (var i = 0; i < this.bullets.length; i++) {
 				if (this.bullets[i].status == 0) {
 					this.bullets[i].set(x, y, vx, vy);

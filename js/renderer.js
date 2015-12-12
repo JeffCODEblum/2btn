@@ -27,5 +27,11 @@ function Renderer() {
 		for (var i = 0; i < bullets.length; i++) {
 			if (bullets[i].status == 1) context.fillRect(bullets[i].x, bullets[i].y, bullets[i].w, bullets[i].h);
 		}
+		
+		context.fillStyle = "#222222";
+		context.fillRect(0, 0, 480, 16);
+		context.fillRect(0, 320 - 16, 480, 16);
+		context.fillRect(0, 0, 16, 320);
+		context.fillRect(480 -16, 0, 16, 320);
 	}
 }
