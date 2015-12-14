@@ -10,6 +10,7 @@ function Gun() {
 	this.shoot = function(x, y, theta) {
 		if (Date.now() - this.lastShot > fireRate) {
 			var randVal, vx, vy;
+			document.getElementById('shootSound').play();
 			for (var j = 0; j < 4; j++) {
 				randVal = (Math.floor(Math.random() * 8) - 4)  * Math.PI / 120;
 			//	randVal = 0;
